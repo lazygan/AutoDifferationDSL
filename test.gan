@@ -1,0 +1,33 @@
+#list(1,2,3,4,5,6)
+x1 = list(2,list(2,2),2)
+x2 = list(5,list(5,5),5)
+##ln(x1)+x1*x2-sin(x2)
+#func main(x,y):
+#    x+y
+#main(x1,x2)
+#
+#func main(x,y):
+#    x*y
+#main(x1,x2)
+#func main(x,y):
+#    func r(x,y):
+#        func r1(a,b):
+#            func r2(x):
+#                (list(5,list(5,5),5)+x1)
+#            r2(a)*b
+#        r1(x,y)
+#    r(x,y)
+#x3 = x2*x1+main(x1,x2)
+#x3
+
+func main(x,y):
+     func r1(x,y):
+         func r(a):
+             func r3(a):
+                 x2+a
+             x1*r3(a)
+         tmp=list(4,list(4,4),4)
+         r(x)*r(x)*r(tmp)*x2
+     r1(x,y)
+main(x1,x2)
+

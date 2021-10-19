@@ -1,0 +1,65 @@
+L = 72
+W = 68
+h = 30
+Pi=3.1415926535
+
+r = W/(2*Pi)    # 10.82
+l_ = sqrt(h*h+r*r) # 31.89
+alpha = W/(2*l_) # 1.07
+L_ = L*h/l_ # 67.73
+
+func tan(t):
+    sin(t)/cos(t)
+
+func pos(x,y):
+    list(x,y)
+
+func line(pos):
+    list(pos)
+
+func curve(pos1,pos2,pos3):
+    list(pos1,pos2,pos3)
+
+func curve_fit_circle( r ,t1 , t2 ):
+    dt = t2-t1
+    bzr = ( r * tan(dt/4) )
+    acp1 = pos(r * cos(t1) , r * sin(t1))
+    acp2 = pos(r * cos(t2) , r * sin(t2))
+    bcp1 = pos( acp1[0] - bzr * sin(t1) , acp1[1] + bzr * cos(t1) )
+    bcp2 = pos( acp2[0] + bzr * sin(t2) , acp2[1] - bzr * cos(t2) )
+    curve ( bcp1 - acp1,bcp2 -acp1,acp2-acp1  )
+
+func lineByTheta(l,t):
+    acp_end = pos(l*cos(t),l*sin(t))
+    line(acp_end)
+
+
+func skirt():
+    t1 = 0
+    t2 = alpha
+    r1 = l_
+    r2 = l_+L
+    waistLine = curve_fit_circle(r1,t1,t2)
+    rightGeneratrix = lineByTheta( r2,t2 )
+    bottomLine = curve_fit_circle( r2,t2,t1)
+    rightGeneratrix = lineByTheta( -r2,t1 )
+    skirtFront = list (waistLine,rightGeneratrix,bottomLine,rightGeneratrix)
+    skirtBack = skirtFront
+    sewInfo= list(0,1,0,1)
+    list(skirtFront,skirtBack,sewInfo)
+
+skirt()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
